@@ -32,7 +32,7 @@ const resolvers = {
 };
 
 // The ApolloServer constructor requires two parameters: your schema
-// definition
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
