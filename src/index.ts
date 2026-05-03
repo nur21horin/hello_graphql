@@ -30,9 +30,6 @@ const resolvers = {
     books: () => books,
   },
 };
-
-// The ApolloServer constructor requires two parameters: your schema
-
 const server = new ApolloServer({
   typeDefs,
   resolvers,
