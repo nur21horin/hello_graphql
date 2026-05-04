@@ -24,7 +24,11 @@ type Product{
 const resolvers = {
   Query: {
     products: () => db.products,
-    product: (_, { id }) => db.products.find((p) => p.id === id)
+    product: (parent:any,args: { id:String },context:any) =>{
+      const result=db.products.find(pd=>pd.id===args.id);
+      return result;
+    }
+       
   },
 };
 const server = new ApolloServer({
