@@ -15,6 +15,14 @@ type Product{
     products:[Product]
     }
 
+    type Review{
+    id:ID!
+    review:String
+    rating:Float
+    date:String
+    productId:String
+    }
+
   type Query {
   products:[Product]
   product (id: ID!): Product
@@ -22,4 +30,5 @@ type Product{
   category (id: ID!): Category
   
   }
+
 `;
