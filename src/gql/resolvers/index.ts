@@ -16,6 +16,8 @@ export const resolvers = {
 
   Product:{
     category:(parent,args,context)=>{
+      const result=db.categories.find(ct=>ct.id===parent.categoryId);
+      return result;
 
     }
   }
