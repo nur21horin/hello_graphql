@@ -13,4 +13,10 @@ export const resolvers = {
       return result;
 
   },
+
+  Product:{
+    category:(parent,args,context)=>{
+
+    }
+  }
 };
