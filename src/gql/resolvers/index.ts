@@ -16,19 +16,19 @@ export const resolvers = {
   }
 },
   Product:{
-    category:(parent,args,context)=>{
-      const result=db.categories.find(ct=>ct.id===parent.categoryId);
+    category:({categoryId},args:any,context:any)=>{
+      const result=db.categories.find(ct=>ct.id===categoryId);
       return result;
 
     }
-    ,reviews:(parent,args,context)=>{
-      const result=db.reviews.filter(rv=>rv.productId===parent.id);
+    ,reviews:({id},args:any,context:any)=>{
+      const result=db.reviews.filter(rv=>rv.productId===id);
       return result;
     }
   },
   Category:{
-    products:(parent,args,context)=>{
-      const result=db.products.filter(pd=>pd.categoryId===parent.id);
+    products:({id},args:any,context:any)=>{
+      const result=db.products.filter(pd=>pd.categoryId===id);
       return result;
     }
   }
