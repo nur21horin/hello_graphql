@@ -7,7 +7,7 @@ type Product{
     price:Float
     quantity:Int
     onStock:Boolean
-    categoryId:ID
+    categoryId:Category
 }
     type Category{
     id:ID!
