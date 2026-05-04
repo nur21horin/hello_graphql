@@ -8,6 +8,7 @@ type Product{
     quantity:Int
     onStock:Boolean
     categoryId:Category
+    reviews:[Review]
 }
     type Category{
     id:ID!
