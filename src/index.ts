@@ -1,5 +1,6 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { db } from "./db.js";
 
 const typeDefs = `#graphql
 type Product{
@@ -15,11 +16,16 @@ type Product{
 
   type Query {
   products:[Product]
+  product (id: ID!): Product
   }
 `;
 
+
 const resolvers = {
-  Query: {},
+  Query: {
+    products: () => db.products,
+    product: (_, { id }) => db.products.find((p) => p.id === id)
+  },
 };
 const server = new ApolloServer({
   typeDefs,

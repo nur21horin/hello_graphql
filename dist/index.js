@@ -1,33 +1,27 @@
-import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { ApolloServer } from "@apollo/server";
+import { startStandaloneServer } from "@apollo/server/standalone";
+import { db } from "./db.js";
 const typeDefs = `#graphql
-  
-  type Book {
-    title: String
-    author: String
-  }
+type Product{
+    id:ID!
+    name:String
+    image:String
+    description:String
+    price:Float
+    quantity:Int
+    onStock:Boolean
+    categoryId:ID
+}
 
   type Query {
-    books: [Book]
+  products:[Product]
   }
 `;
-const books = [
-    {
-        title: 'The Awakening',
-        author: 'Kate Chopin',
-    },
-    {
-        title: 'City of Glass',
-        author: 'Paul Auster',
-    },
-];
 const resolvers = {
     Query: {
-        books: () => books,
+        products: () => db.products,
     },
 };
-// The ApolloServer constructor requires two parameters: your schema
-// definition and your set of resolvers.
 const server = new ApolloServer({
     typeDefs,
     resolvers,
