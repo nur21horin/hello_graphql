@@ -7,13 +7,14 @@ export const resolvers = {
       const result=db.products.find(pd=>pd.id===args.id);
       return result;
     },
+  
     categories: () => db.categories,
     category: (parent:any,args: { id:String },context:any) =>{
       const result=db.categories.find(ct=>ct.id===args.id);
       return result;
 
-  },
-
+  }
+},
   Product:{
     category:(parent,args,context)=>{
       const result=db.categories.find(ct=>ct.id===parent.categoryId);
@@ -21,11 +22,11 @@ export const resolvers = {
 
     }
   },
-
   Category:{
     products:(parent,args,context)=>{
       const result=db.products.filter(pd=>pd.categoryId===parent.id);
       return result;
     }
   }
+  
 };
